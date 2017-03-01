@@ -1,19 +1,20 @@
 package com.lmr.thread;
 
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//线程暂停和继续
+public class Callable_Future_Panel {
 
-public class TestThread_1 {
-	
 	JFrame jf;
 
 	JPanel jp;
@@ -29,24 +30,11 @@ public class TestThread_1 {
 	JButton jb2;
 	JButton jb3;
 	
-	Thread thread1;
-	Thread thread2;
-	Thread thread3;
+	ExecutorService exector;
+	Callable_1 callable1;
+	Future<Integer> result;
 	
-//	Runnable_1 thread1;
-	
-	Runnable_1 runnable11;
-	Runnable_2 runnable1;
-	
-	int flag1=1;
-	int flag2=1;
-	int flag3=1;
-	
-	Object lock1=new Object();
-	Object lock2;
-	Object lock3;
-
-	public TestThread_1() {
+	public Callable_Future_Panel() {
 
 		jf = new JFrame();
 		jp = new JPanel();
@@ -64,35 +52,14 @@ public class TestThread_1 {
 		jf.setSize(500, 500);
 
 	}
-
+	
 	private void initThread() {
 		// TODO Auto-generated method stub
 		
-//		runnable1=new Runnable_2();
-//		thread1=new Thread(runnable1);
-//		thread1.start();
-		
-//		thread1=new Runnable_1();
-		
-		runnable11=new Runnable_1(){
-
-			@Override
-			protected void runPersonelLogic() {
-				// TODO Auto-generated method stub
-				for(int i=0;i<10;i++){
-					System.out.println(i);
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-			
-		};
-		thread1=new Thread(runnable11);
-		thread1.start();
+		exector=Executors.newCachedThreadPool();
+		callable1=new Callable_1();
+		result=exector.submit(callable1);
+		exector.shutdown();
 		
 	}
 
@@ -104,14 +71,15 @@ public class TestThread_1 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-					
-//					if(runnable1.isFlag()){
-//						runnable1.setFlag(false);
-//						System.out.println("---------------------");
-//					}
-				
-				runnable11.setFlag(true);
-					
+				try {
+					jl1.setText(result.get()+"");
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ExecutionException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		
@@ -121,17 +89,7 @@ public class TestThread_1 {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				
-				
-//				if(!runnable1.isFlag()){
-//					runnable1.setFlag(true);
-//					System.out.println("*********************");
-//					synchronized (runnable1) {
-//					runnable1.notify();	
-//					}
-//				}
-				
-				runnable11.setFlag(false);
-				
+				jl2.setText(result.isDone()+"");
 			}
 		});
 		
@@ -140,7 +98,8 @@ public class TestThread_1 {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				jl3.setText("789");
+				result.cancel(true);
+				jl3.setText(result.isCancelled()+"");
 			}
 		});
 		
@@ -179,9 +138,9 @@ public class TestThread_1 {
 	
 	public static void main(String[] args) {
 		
-		TestThread_1 t=new TestThread_1();
+		Callable_Future_Panel t=new Callable_Future_Panel();
 		
 	}
 
+	
 }
-

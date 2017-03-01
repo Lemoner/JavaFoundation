@@ -20,27 +20,49 @@ public class Runnable_2 implements Runnable {
 		process();
 	}
 
-	private synchronized void process() {
+	private synchronized void process() {//该线程的锁是实例化该Runnable线程的对象
 		// TODO Auto-generated method stub
 
 		for (int i = 0; i < 50; i++) {
 
-			if (flag == true) {
-				System.out.println(i);
+//			if (flag == true) {
+//				System.out.println(i);
+//				try {
+//					Thread.sleep(2000);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				System.out.println("+++"+i);
+//			} else {
+//				try {
+//					wait();
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//			
+//			System.out.println("//*****"+i);
+			
+			if(flag!=true){
 				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				try {
+					System.out.println("============="+i);
 					wait();
+					System.out.println("........."+i);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
+			System.out.println(i);
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("+++"+i);
 
 		}
 

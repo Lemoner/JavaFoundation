@@ -1,6 +1,6 @@
 package com.lmr.thread;
 
-public class Runnable_1 implements Runnable{
+public abstract class Runnable_1 implements Runnable{
 
 	private int num=0;
 	
@@ -28,7 +28,7 @@ public class Runnable_1 implements Runnable{
 		
 		while(true){
 			
-			synchronized (lock) {
+			synchronized (lock) {//该线程的锁是Object类型的lock变量
 			
 				if(!flag){
 					try {
@@ -39,19 +39,41 @@ public class Runnable_1 implements Runnable{
 					}
 				}
 				
-				System.out.println(num++);
+//				System.out.println(num++);
 				
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+//				for(int i=0;i<10;i++){
+//					if(!flag){
+//						try {
+//							lock.wait();
+//						} catch (InterruptedException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//					}
+//					System.out.println(i);
+//					try {
+//						Thread.sleep(1000);
+//					} catch (InterruptedException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
+//				
+//				try {
+//					Thread.sleep(100);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
 				
 			}
+			
+			this.runPersonelLogic();
 			
 		}
 		
 	}
+
+	protected abstract void runPersonelLogic();
 
 }
