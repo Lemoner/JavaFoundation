@@ -1,5 +1,6 @@
 package com.lmr.thread;
 
+import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -77,40 +78,39 @@ public class ThreadTwoRoadRunTest {
 			@Override
 			public Integer call() throws Exception {
 				// TODO Auto-generated method stub
-				
-				while(index<=100){
-					
-					if(index<20){
-						jl1.setText(""+index++);
-					}
-					else if(index==20){
-						System.out.println("++++++");
-						if(task1.isDone()){
-							jl1.setText(""+index++);
+
+				while (index <= 100) {
+
+					if (index < 20) {
+						jl1.setText("" + index++);
+					} else if (index == 20) {
+						if (task1.isDone()) {
+							jl1.setText("" + index++);
 							thread2.start();
 						}
-					}
-					else if(index<50){
-						jl1.setText(""+index++);
-					}
-					else if(index==50){
-						if(task2.isDone()){
-							jl1.setText(""+index++);
+					} else if (index < 50) {
+						jl1.setText("" + index++);
+					} else if (index == 50) {
+						if (task2.isDone()) {
+							jl1.setText("" + index++);
 							thread3.start();
 						}
-					}
-					else if(index<100){
-						jl1.setText(""+index++);
-					}
-					else if(index==100){
-						if(task3.isDone()){
-							jl1.setText("all is done"+index++);
+					} else if (index < 100) {
+						jl1.setText("" + index++);
+					} else if (index == 100) {
+						if (task3.isDone()) {
+							jl1.setText("all is done" + index++);
 						}
 					}
-					
-					Thread.sleep(100);
+
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-				
+
 				return 1;
 			}
 		};
