@@ -38,7 +38,7 @@ class MatchCount implements Callable<Integer>{
 
 	private File directory;
 	private String keyword;
-	private int count;
+	private int count;//关键字数目
 	
 	public MatchCount(File directory,String keyword) {
 		// TODO Auto-generated constructor stub
@@ -53,23 +53,23 @@ class MatchCount implements Callable<Integer>{
 		count=0;
 		try{
 			File[] files=directory.listFiles();
-			List<Future<Integer>> results=new ArrayList<>();
+			List<Future<Integer>> results=new ArrayList<>();//Future对象List
 			
 			for(File file:files){
 				if(file.isDirectory()){
-					MatchCount counter=new MatchCount(file, keyword);
+					MatchCount counter=new MatchCount(file, keyword);//递归遍历
 					FutureTask<Integer> task=new FutureTask<>(counter);
 					results.add(task);
 					Thread t=new Thread(task);
 					t.start();
 				}
 				else{
-					if(search(file)){
+					if(search(file)){//若是文件，则去计算数目
 						count+=searchsum(file);
 					}
 				}
 			}
-			for(Future<Integer> result:results){
+			for(Future<Integer> result:results){//当该目录下所有文件的Future计算完后，累加数目
 				count+=result.get();
 			}
 		}
@@ -79,7 +79,7 @@ class MatchCount implements Callable<Integer>{
 		return count;
 	}
 	
-	public boolean search(File file){
+	public boolean search(File file){//判断文件是否有关键字
 		try{
 			Scanner in=new Scanner(file);
 			boolean found=false;
@@ -97,12 +97,14 @@ class MatchCount implements Callable<Integer>{
 		}
 	}
 	
-	public int searchsum(File file) throws FileNotFoundException {
+	public int searchsum(File file) throws FileNotFoundException {//关键字计数
 		Scanner in = new Scanner(file);
 		int found = 0;
 		while (in.hasNextLine()) {
 			String line = in.nextLine();
-			if (line.contains(keyword)) {
+			while (line.contains(keyword)) {
+				System.out.println(line);
+				line=line.substring(line.indexOf(keyword)+keyword.length());
 				found++;
 			}
 		}

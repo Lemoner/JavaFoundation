@@ -17,14 +17,14 @@ public class ControlTaskGroupTest {
 	public static void main(String[] args) {
 		
 		List<Callable<Integer>> callablelist=new ArrayList<>();
-		List<Future<Integer>> tasklist=new ArrayList<>();
-		
-		Future<Integer> singletask;
+//		List<Future<Integer>> tasklist=new ArrayList<>();
+//		
+//		Future<Integer> singletask;
 		
 		Random rand=new Random();
 		
 		for(int i=1;i<10;i++){
-			Callable<Integer> callable=new SumCallable(i, i+10, (rand.nextInt(10)+1)*100);
+			Callable<Integer> callable=new SumCallable(i, i+10, (rand.nextInt(10)+1)*100);//随机生成线程休息时间数，便于识别线程执行的进度
 			callablelist.add(callable);
 		}
 		
@@ -67,6 +67,7 @@ public class ControlTaskGroupTest {
 		for(int i=0;i<callablelist.size();i++){
 			try {
 				System.out.println(service.take().get());//当任务完成时，有结果就返回，无须等待全部任务完成，但结果没顺序
+				//take()取出下一个已完成的结果，若无结果可用则阻塞
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -84,7 +85,7 @@ class SumCallable implements Callable<Integer>{
 
 	private int start;
 	private int end;
-	private int sleeptime;
+	private int sleeptime;//线程休息时间
 	private int result;
 	
 	public SumCallable(int start,int end,int sleeptime) {

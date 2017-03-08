@@ -13,8 +13,8 @@ public class BlockingQueueTest {
 		String directory="E:\\Java_Swing\\src\\com\\swing";
 		String keyword="JPanel";
 		
-		final int MAX_FILE_QUEUE_SIZE=1;
-		final int MAX_SEARCH_THREAD_SIZE=100;
+		final int MAX_FILE_QUEUE_SIZE=10;//队列的长度
+		final int MAX_SEARCH_THREAD_SIZE=100;//最大并发线程数
 		
 		BlockingQueue<File> queue=new ArrayBlockingQueue<>(MAX_FILE_QUEUE_SIZE);
 		
@@ -88,10 +88,10 @@ class SearchTask implements Runnable{
 		try{
 			boolean done=false;
 			while(!done){
-				File file=queue.take();
+				File file=queue.take();//取元素
 				if(file==FileEnumerationTask.DUMMY){
 					queue.put(file);
-					done=true;
+					done=true;//队列执行完结束标志
 				}
 				else{
 					search(file);
@@ -114,7 +114,6 @@ class SearchTask implements Runnable{
 				count++;
 			}
 		}
-		System.out.println("******************* "+count);
 	}
 	
 }

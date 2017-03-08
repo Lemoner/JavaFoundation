@@ -15,7 +15,7 @@ public class Callable_1 implements Callable<Integer>{
 			
 			Thread.sleep(1000);
 			sum+=i;
-			System.out.println(i+" - "+sum);
+			System.out.println(i+" - "+sum);//每隔1秒打印数据
 			
 		}
 		
