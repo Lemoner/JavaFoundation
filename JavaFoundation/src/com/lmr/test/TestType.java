@@ -6,15 +6,15 @@ public class TestType {
 
 	public static void main(String[] args) {
 		
-		Person x=new Person();
+		TPerson x=new TPerson();
 		x.something=1;
 		System.out.println(x.toString());
 		x.something="str";
 		System.out.println(x);
 		
-		Person<Integer> y=new Person<Integer>();
+		TPerson<Integer> y=new TPerson<Integer>();
 		y.something=1;
-		Person<String> z=new Person<String>();
+		TPerson<String> z=new TPerson<String>();
 		z.something="str";
 		
 		System.out.println(y.something);
@@ -24,7 +24,7 @@ public class TestType {
 	
 }
 
-class Person<T>{
+class TPerson<T>{
 	public Integer age;
 	public String name;
 	public T something;

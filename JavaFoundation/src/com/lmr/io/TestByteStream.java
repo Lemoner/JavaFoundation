@@ -1,5 +1,6 @@
 package com.lmr.io;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,15 +9,20 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestOne {
+public class TestByteStream {
 
 	public static void main(String[] args) {
 		
 //		System.out.println(System.getProperty("user.dir"));//获取当前文件目录
+		
+		String headpath="D:\\TestIOData\\";
 
 		try {
 //			FileInputMethod("D:\\TestIOData\\two.txt");
-			FileOutputMethod("D:\\TestIOData\\two.txt");
+//			FileOutputMethod("D:\\TestIOData\\two.txt");
+			
+			CopyFileMethod(headpath+"one.txt", headpath+"three.txt");
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,6 +89,29 @@ public class TestOne {
 //		fos.write(str.getBytes());
 		fos.write(str.getBytes("utf-8"));
 		fos.close();
+		
+	}
+	
+	public static void CopyFileMethod(String srcpath,String destpath) throws IOException{
+		
+		File srcfile=new File(srcpath);
+		File destfile=new File(destpath);
+		
+		if(!srcfile.exists()){
+			System.out.println(srcpath+"文件不存在");
+		}
+		
+		FileInputStream srcfis=new FileInputStream(srcfile);
+		FileOutputStream destfos=new FileOutputStream(destfile);
+		
+		byte[] bytes=new byte[1024];
+		while(srcfis.read(bytes)!=-1){
+			destfos.write(bytes);//使用数组太大，可能会造成文件末尾添加了无用的null字符串
+			destfos.flush();//清除输出流
+		}
+		
+		srcfis.close();
+		destfos.close();
 		
 	}
 	
