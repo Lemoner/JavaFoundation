@@ -61,6 +61,8 @@ public class TestRandomAccessFile {
 		System.out.println(new String(bytes));
 		raf.read(bytes);
 		System.out.println(new String(bytes));
+		raf.read(bytes);
+		System.out.println(new String(bytes));
 		System.out.println(raf.getFilePointer());
 		raf.seek(60);
 		raf.read(bytes);

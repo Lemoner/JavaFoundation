@@ -18,10 +18,10 @@ public class TestByteStream {
 		String headpath="D:\\TestIOData\\";
 
 		try {
-//			FileInputMethod("D:\\TestIOData\\two.txt");
+			FileInputMethod("D:\\TestIOData\\two.txt");
 //			FileOutputMethod("D:\\TestIOData\\two.txt");
 			
-			CopyFileMethod(headpath+"one.txt", headpath+"three.txt");
+//			CopyFileMethod(headpath+"one.txt", headpath+"three.txt");
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -30,7 +30,7 @@ public class TestByteStream {
 	
 	}
 	
-	private static void FileInputMethod(String path) throws IOException{
+	public static void FileInputMethod(String path) throws IOException{
 		
 		FileInputStream fis=new FileInputStream(path);
 		
@@ -54,27 +54,27 @@ public class TestByteStream {
 		
 		//多字节读取
 		byte[] bytes=new byte[1024];
-//		while(fis.read(bytes)!=-1){
+		while(fis.read(bytes)!=-1){
 //			for(int i=0;i<bytes.length;i++){
 //				System.out.print(bytes[i]+" ");
 //				if(i%10==0){
 //					System.out.println();
 //				}
 //			}
-//			System.out.println();
-//			System.out.println(new String(bytes));
-//		}
-		
-		while(fis.read(bytes, 0, bytes.length)!=-1){//一次读取指定长度的字节
-			for (int i = 0; i < bytes.length; i++) {
-				System.out.print(bytes[i] + " ");
-				if (i % 10 == 0) {
-					System.out.println();
-				}
-			}
 			System.out.println();
 			System.out.println(new String(bytes));
 		}
+		
+//		while(fis.read(bytes, 0, bytes.length)!=-1){//一次读取指定长度的字节
+//			for (int i = 0; i < bytes.length; i++) {
+//				System.out.print(bytes[i] + " ");
+//				if (i % 10 == 0) {
+//					System.out.println();
+//				}
+//			}
+//			System.out.println();
+//			System.out.println(new String(bytes));
+//		}
 		
 		
 		fis.close();
@@ -84,6 +84,7 @@ public class TestByteStream {
 		
 //		FileOutputStream fos=new FileOutputStream(path);//覆盖原文件内容，重新添加
 		FileOutputStream fos=new FileOutputStream(path, true);//在原有基础上追加，true是写入文件尾，false是写入文件头
+		//换行为\r\n
 		
 		String str="hello,world!";
 //		fos.write(str.getBytes());
