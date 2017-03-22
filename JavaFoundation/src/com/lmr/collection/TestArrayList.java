@@ -33,8 +33,7 @@ public class TestArrayList {
 		
 		stringlists.clear();
 		System.out.println(stringlists.size());
-		
-		
+
 	}
 	
 }
