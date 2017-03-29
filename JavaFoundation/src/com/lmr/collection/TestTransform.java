@@ -10,11 +10,11 @@ public class TestTransform {
 
 	public static void main(String[] args) {
 		
-//		initJiaoBingCha();
+		initJiaoBingCha();
 		
 //		initArrayToCollection();
 		
-		initCollectionToArray();
+//		initCollectionToArray();
 		
 	}
 
@@ -48,13 +48,13 @@ public class TestTransform {
 			a[i]=String.valueOf((char)('A'+i));
 		}
 		
-//		List<String> l=new ArrayList<>();
-//		l=Arrays.asList(a);
+		List<String> l=new ArrayList<>();
+		l=Arrays.asList(a);
 		
-//		Set<String> s=new HashSet<>();//若数组中有重复元素，Set会自动忽略掉重复的元素
-//		s.addAll(Arrays.asList(a));
+		System.out.println(l);
 		
-		Set<String> s=new HashSet<>(Arrays.asList(a));
+		Set<String> s=new HashSet<>();//若数组中有重复元素，Set会自动忽略掉重复的元素
+		s.addAll(Arrays.asList(a));
 		
 		System.out.println(s);
 		
@@ -75,17 +75,17 @@ public class TestTransform {
 			bSet.add(String.valueOf((char)('A'+i)));
 		}
 		
-		System.out.println(aSet);
-		System.out.println(bSet);
+		System.out.println("A "+aSet);
+		System.out.println("B "+bSet);
 		
 		aSet.retainAll(bSet);//A=A∩B
-		System.out.println(aSet);
+		System.out.println("A=A∩B "+aSet);
 		
 		aSet.addAll(bSet);//A=A∪B
-		System.out.println(aSet);
+		System.out.println("A=A∪B "+aSet);
 		
 		aSet.removeAll(bSet);//A=A-B
-		System.out.println(aSet);
+		System.out.println("A=A-B "+aSet);
 		
 	}
 	

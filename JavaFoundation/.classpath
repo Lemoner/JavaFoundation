@@ -2,5 +2,17 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/gnujaxp.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/iText-2.1.1.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/jcommon-1.0.13.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/jfreechart-1.0.10.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/jfreechart-1.0.10-experimental.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/jfreechart-1.0.10-swt.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/junit.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/jfreechart-1.0.10/lib/swtgraphics2d.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/DJ NativeSwing/DJNativeSwing.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/DJ NativeSwing/DJNativeSwing-SWT.jar"/>
+	<classpathentry kind="lib" path="E:/program_zip/chart/DJ NativeSwing/org.eclipse.swt.win32.win32.x86_64_3.100.1.v4236b.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

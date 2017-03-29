@@ -16,6 +16,10 @@ public class TestArrayList {
 		stringlists.add("ad");
 		stringlists.add("ce");
 		
+		String str=stringlists.toString();
+		System.out.println(str);
+		System.out.println(str.replaceAll("\\[|]", ""));
+		
 		System.out.println(stringlists.size());
 		for(String s:stringlists){
 			System.out.println(s);
@@ -33,6 +37,7 @@ public class TestArrayList {
 		
 		stringlists.clear();
 		System.out.println(stringlists.size());
+		
 
 	}
 	
