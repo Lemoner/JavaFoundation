@@ -16,6 +16,7 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
@@ -40,7 +41,9 @@ public class BarChart {
 		
 		jp.setBackground(new Color(255, 255, 255));
 		
-		initJPanel();
+//		initChart1();
+
+		initChart2();
 		
 		jf.add(jp);
 
@@ -50,6 +53,81 @@ public class BarChart {
 		
 	}
 	
+	private void initChart2() {
+		// TODO Auto-generated method stub
+		
+		DefaultCategoryDataset defaultcategorydataset = new DefaultCategoryDataset();
+		defaultcategorydataset.addValue(20, "", "第一步");
+		defaultcategorydataset.addValue(50, "", "第二步");
+		defaultcategorydataset.addValue(60, "", "第三步");
+		defaultcategorydataset.addValue(40, "", "第四步");
+		defaultcategorydataset.addValue(40, "", "第五步");
+		defaultcategorydataset.addValue(50, "", "第六步");
+		defaultcategorydataset.addValue(10, "", "第七步");
+        
+        JFreeChart chart = ChartFactory.createBarChart("Bar Chart Demo 9", null, "Value", defaultcategorydataset, PlotOrientation.VERTICAL, false, true, false);
+        chart.setBackgroundPaint(new Color(255, 255, 255));
+        chart.setBorderVisible(false);//边界线条是否可见
+        chart.setAntiAlias(false);//设置字体抗锯齿
+        
+        Font xfont = new Font("微软雅黑",Font.PLAIN,12) ;// X轴  
+        Font yfont = new Font("微软雅黑",Font.PLAIN,12) ;// Y轴  
+        Font kfont = new Font("微软雅黑",Font.PLAIN,12) ;// 底部  
+        Font titleFont = new Font("微软雅黑", Font.PLAIN , 13) ; // 图片标题  
+		CategoryPlot plot = chart.getCategoryPlot();// 图形的绘制结构对象
+
+		// 图片标题
+		TextTitle title=new TextTitle(chart.getTitle().getText());
+		title.setFont(titleFont);
+//		title.setPaint(new Color(115, 110, 102));
+		title.setPaint(new Color(0, 0, 0));
+		chart.setTitle(title);
+
+		// 底部
+		// chart.getLegend().setItemFont(kfont);
+		
+		// X 轴,分类轴
+		CategoryAxis domainAxis = plot.getDomainAxis();
+		domainAxis.setLabelFont(xfont);// 轴标题
+		domainAxis.setLabelPaint(new Color(0, 0, 0));
+		domainAxis.setTickLabelFont(xfont);// 轴数值
+		domainAxis.setTickLabelPaint(new Color(0, 0, 0)); // 字体颜色
+		// domainAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45);
+		// // 横轴上的label斜显示
+//		domainAxis.setTickMarkPaint(Color.RED);
+//		domainAxis.setTickMarksVisible(true);
+		
+//		NumberAxis numAxis = (NumberAxis) plot.getRangeAxis();//x轴设置
+//		numAxis.setTickUnit(new NumberTickUnit(100));//每100个刻度显示一个刻度值
+
+		// Y 轴,数据轴
+		ValueAxis rangeAxis = plot.getRangeAxis();
+		rangeAxis.setLabelFont(yfont);
+		rangeAxis.setLabelPaint(new Color(0, 0, 0)); // 字体颜色
+		rangeAxis.setTickLabelFont(yfont);
+		rangeAxis.setTickLabelPaint(new Color(0, 0, 0)); // 字体颜色
+//		rangeAxis.setPositiveArrowVisible(true);
+//		rangeAxis.setAutoRange(true);//自动设置数据轴数据范围
+//		rangeAxis.setAutoRangeMinimumSize(500);//自动设置数据轴数据范围时数据范围的最小跨度
+//		rangeAxis.setAutoTickUnitSelection(false);//数据轴的数据标签是否自动确定
+        
+        CategoryPlot categoryplot = (CategoryPlot)chart.getPlot();
+        categoryplot.setBackgroundPaint(Color.WHITE);
+        categoryplot.setOutlineVisible(false);
+		categoryplot.setRangeGridlinesVisible(true);//数据轴网格是否可见
+		categoryplot.setRangeGridlineStroke(new BasicStroke(1));
+		
+        Paint apaint[] = {new Color(76,129,189)};
+        CustomBarRenderer custombarrenderer = new CustomBarRenderer(apaint);
+        categoryplot.setRenderer(custombarrenderer);
+        
+		ChartPanel chartpanel = new ChartPanel(chart);
+		
+		jp.setLayout(new GridLayout());
+		jp.add(chartpanel);
+		
+	}
+
 	static class CustomBarRenderer extends BarRenderer
     {
 
@@ -79,7 +157,7 @@ public class BarChart {
         return apaint;
     }
 
-	private void initJPanel() {
+	private void initChart1() {
 		// TODO Auto-generated method stub
 		
 		DefaultCategoryDataset defaultcategorydataset = new DefaultCategoryDataset();

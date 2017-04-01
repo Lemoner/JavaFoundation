@@ -35,7 +35,9 @@ public class LineChartOne {
 		
 		jp.setBackground(new Color(255, 255, 255));
 		
-		initJPanel();
+//		initChart1();
+		
+		initChart2();
 		
 		jf.add(jp);
 
@@ -45,7 +47,12 @@ public class LineChartOne {
 		
 	}
 	
-	private void initJPanel() {
+	private void initChart2() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void initChart1() {
 		// TODO Auto-generated method stub
 		
 		DefaultCategoryDataset defaultcategorydataset = new DefaultCategoryDataset();
