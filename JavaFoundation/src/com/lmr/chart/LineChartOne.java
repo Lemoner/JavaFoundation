@@ -35,9 +35,9 @@ public class LineChartOne {
 		
 		jp.setBackground(new Color(255, 255, 255));
 		
-//		initChart1();
+		initChart1();
 		
-		initChart2();
+//		initChart2();
 		
 		jf.add(jp);
 

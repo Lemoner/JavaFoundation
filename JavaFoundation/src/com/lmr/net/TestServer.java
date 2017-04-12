@@ -23,6 +23,7 @@ public class TestServer {
 		
 		try {
 			ServerSocket ss=new ServerSocket(8888);
+			//cmdÃüÁî telnet 127.0.0.1 8888
 			
 			while(true){
 				Socket soc=ss.accept();

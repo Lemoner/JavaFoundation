@@ -13,6 +13,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PieLabelLinkStyle;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.title.TextTitle;
@@ -79,32 +80,39 @@ public class PieChart {
 //        chartFrame.pack(); //以合适的大小展现图形
 //        chartFrame.setVisible(true);//图形是否可见
 		
-        PiePlot3D mPiePlot = (PiePlot3D)chart.getPlot();
+        PiePlot mPiePlot = (PiePlot)chart.getPlot();
         
         mPiePlot.setLabelFont(new Font("微软雅黑", Font.PLAIN, 15));//设置饼图标签字体
-        mPiePlot.setCircular(false); // 指定显示的饼图上圆形(false)还椭圆形(true) 默认为true 
+        mPiePlot.setCircular(true); 
+//        mPiePlot.setCircular(false); // 指定显示的饼图上圆形(false)还椭圆形(true) 默认为true 
         mPiePlot.setBackgroundImageAlpha(0.3f); // 指定图片的透明度(0.0-1.0)  
 //        mPiePlot.setStartAngle(180f);//饼图的初始角度(饼图的左右旋转角度)
         
         mPiePlot.setForegroundAlpha(1f);//数据区的前景透明度（0.0～1.0）
-        mPiePlot.setOutlinePaint(Color.WHITE);//数据区的边界线条颜色
+//        mPiePlot.setOutlinePaint(Color.WHITE);//数据区的边界线条颜色
+        mPiePlot.setBackgroundAlpha(1f);
+        mPiePlot.setOutlineVisible(false);
+//        mPiePlot.setLabelGap(1D);
+//        mPiePlot.setInteriorGap(0.050000000000000003D);
+        mPiePlot.setSimpleLabels(false);
+        mPiePlot.setLabelLinkStyle(PieLabelLinkStyle.CUBIC_CURVE);//设置连线风格
         
         mPiePlot.setSectionPaint("One", colors[0]);//指定分类饼的颜色
-        mPiePlot.setSectionOutlinePaint("One", colors[0]);//指定分类饼的边框颜色
+//        mPiePlot.setSectionOutlinePaint("One", colors[0]);//指定分类饼的边框颜色
         mPiePlot.setSectionPaint("Two", colors[1]);
-        mPiePlot.setSectionOutlinePaint("Two", colors[1]);
+//        mPiePlot.setSectionOutlinePaint("Two", colors[1]);
         mPiePlot.setSectionPaint("Three", colors[2]);
-        mPiePlot.setSectionOutlinePaint("Three", colors[2]);
+//        mPiePlot.setSectionOutlinePaint("Three", colors[2]);
         mPiePlot.setSectionPaint("Four", colors[3]);
-        mPiePlot.setSectionOutlinePaint("Four", colors[3]);
+//        mPiePlot.setSectionOutlinePaint("Four", colors[3]);
         mPiePlot.setSectionPaint("Five", colors[4]);
-        mPiePlot.setSectionOutlinePaint("Five", colors[4]);
+//        mPiePlot.setSectionOutlinePaint("Five", colors[4]);
         mPiePlot.setSectionPaint("Six", colors[5]);
-        mPiePlot.setSectionOutlinePaint("Six", colors[5]);
+//        mPiePlot.setSectionOutlinePaint("Six", colors[5]);
         mPiePlot.setSectionPaint("Seven", colors[6]);
-        mPiePlot.setSectionOutlinePaint("Seven", colors[6]);
+//        mPiePlot.setSectionOutlinePaint("Seven", colors[6]);
         mPiePlot.setSectionPaint("Eight", colors[7]);
-        mPiePlot.setSectionOutlinePaint("Eight", colors[7]);
+//        mPiePlot.setSectionOutlinePaint("Eight", colors[7]);
         
         StandardPieSectionLabelGenerator standardPieSectionLabelGenerator=new StandardPieSectionLabelGenerator("{1},{2}", NumberFormat.getNumberInstance(), new DecimalFormat("0%"));
         mPiePlot.setLabelGenerator(standardPieSectionLabelGenerator);
@@ -114,11 +122,12 @@ public class PieChart {
 //        mPiePlot.setLabelLinkMargin(0.6f);
 //        mPiePlot.setLabelLinksVisible(false);//分类标签连接线是否显示
         
-        mPiePlot.setShadowPaint(Color.BLACK);//饼图的阴影颜色,X,Y偏移量(只在平面饼图有用)
-        mPiePlot.setShadowXOffset(30f);
-        mPiePlot.setShadowYOffset(30f);
+        mPiePlot.setShadowPaint(Color.white);
+//        mPiePlot.setShadowPaint(Color.BLACK);//饼图的阴影颜色,X,Y偏移量(只在平面饼图有用)
+//        mPiePlot.setShadowXOffset(30f);
+//        mPiePlot.setShadowYOffset(30f);
         
-        mPiePlot.setDepthFactor(0.1f);//3D饼图的Z轴高度（0.0～1.0）
+//        mPiePlot.setDepthFactor(0.1f);//3D饼图的Z轴高度（0.0～1.0）
         
         
 //        mPiePlot.setLabelGenerator(new StandardPieSectionLabelGenerator("{1},{2}", NumberFormat.getNumberInstance(), new DecimalFormat("0.00%")));  
