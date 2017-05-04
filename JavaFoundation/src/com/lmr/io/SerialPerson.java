@@ -10,7 +10,10 @@ public class SerialPerson implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1586881727918562464L;
+	private static final long serialVersionUID = 500670620466089114L;
+	/**
+	 * 
+	 */
 
 //	private transient int id;// transient类型，瞬时变量，不会被序列化
 	private int id;

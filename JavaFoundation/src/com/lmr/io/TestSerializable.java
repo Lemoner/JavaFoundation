@@ -13,9 +13,9 @@ public class TestSerializable {
 
 	public static void main(String[] args) throws IOException {
 		
-		String headpath="D:\\TestIOData\\";
+		String headpath="D:\\FileData\\TestIOData\\";
 		
-		WriteMethod(headpath+"serialperson.txt");
+//		WriteMethod(headpath+"serialperson.txt");
 		
 		ReadMethod(headpath+"serialperson.txt");
 		
