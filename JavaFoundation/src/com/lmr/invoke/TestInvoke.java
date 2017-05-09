@@ -1,5 +1,7 @@
 package com.lmr.invoke;
 
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -25,6 +27,9 @@ public class TestInvoke {
 			
 			Method setStuName=studentclass.getMethod("setName", String.class);
 			setStuName.invoke(stuobj, "Jack");
+			
+//			PropertyDescriptor pd=new PropertyDescriptor("name", studentclass);//通过属性名来获取对应的存储器，从而获取其get，set方法
+//			Method setStuName=pd.getWriteMethod();
 			
 			Method toStuString=studentclass.getMethod("toString");
 			System.out.println(toStuString.invoke(stuobj));

@@ -13,7 +13,7 @@ public class TestArrayChangeSize {
 		a[1]=1;
 		
 		for(int i=0;i<a.length;i++){
-			System.out.print(a[i]);
+			System.out.print(a[i]+" ");
 		}
 		System.out.println();
 		
@@ -24,7 +24,27 @@ public class TestArrayChangeSize {
 		a[4]=4;
 		
 		for(int i=0;i<a.length;i++){
-			System.out.print(a[i]);
+			System.out.print(a[i]+" ");
+		}
+		System.out.println();
+		
+		String[] b=new String[2];
+		b[0]="A";
+		b[1]="B";
+		
+		for(int i=0;i<b.length;i++){
+			System.out.print(b[i]+" ");
+		}
+		System.out.println();
+		
+		b=(String[]) ChangeSize(b, 5);
+		
+		b[2]="C";
+		b[3]="D";
+		b[4]="E";
+		
+		for(int i=0;i<b.length;i++){
+			System.out.print(b[i]+" ");
 		}
 		System.out.println();
 		
@@ -38,7 +58,7 @@ public class TestArrayChangeSize {
 			return null;
 		}
 		
-		Class componenttype=c.getComponentType();
+		Class componenttype=c.getComponentType();//获取传进来的数组类型
 		
 		int oldlength=Array.getLength(obj);
 		
