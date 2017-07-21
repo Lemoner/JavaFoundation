@@ -15,7 +15,7 @@ public class TestSerializable {
 		
 		String headpath="D:\\FileData\\TestIOData\\";
 		
-//		WriteMethod(headpath+"serialperson.txt");
+		WriteMethod(headpath+"serialperson.txt");
 		
 		ReadMethod(headpath+"serialperson.txt");
 		
@@ -26,7 +26,7 @@ public class TestSerializable {
 		FileOutputStream fos=new FileOutputStream(path);
 		ObjectOutputStream oos=new ObjectOutputStream(fos);
 		
-		for(int i=1;i<10;i++){
+		for(int i=10;i<20;i++){
 			SerialPerson sp=new SerialPerson("A"+i, 10+i,"aBc"+i);
 			oos.writeObject(sp);
 		}
@@ -48,15 +48,15 @@ public class TestSerializable {
 		FileInputStream fis=new FileInputStream(path);
 		ObjectInputStream ois=new ObjectInputStream(fis);
 		
-		while(true){//使用处理异常的方式来判断文件是否结束
-			
+//		while(true){//使用处理异常的方式来判断文件是否结束
+		while(fis.available()>0){//代表文件还有内容
 			try {
 				SerialPerson sp=(SerialPerson) ois.readObject();//文件读取完毕后，会抛异常
 				System.out.println(sp.toString());
 				
 			} catch (Exception  e) {
 				// TODO Auto-generated catch block
-//				e.printStackTrace();
+				e.printStackTrace();
 				System.out.println("文件读取完毕!");  
                 break;  
 			}
