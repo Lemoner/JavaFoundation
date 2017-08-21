@@ -44,7 +44,8 @@ public class TestClass {
 		// TODO Auto-generated method stub
 		
 //		Class c=Student.class;
-		Class c=Math.class;
+//		Class c=Math.class;
+		Class c=List.class;
 		
 		System.out.println(c.getName());
 		System.out.println(c.getSimpleName());

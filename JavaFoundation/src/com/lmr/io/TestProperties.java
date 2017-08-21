@@ -5,19 +5,20 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Properties;
 
 public class TestProperties {
 	
-	private static String path="D:\\TestIOData\\resultpro.properties";
+	private static String path=System.getProperty("user.dir")+"\\src\\com\\lmr\\io\\typedata.properties";
 
 	public static void main(String[] args) {
 		
 		try {
 			
-			WriteMethod();
+//			WriteMethod();
 			
 			ReadMethod();
 			
@@ -50,8 +51,10 @@ public class TestProperties {
 	private static void ReadMethod() throws IOException {
 		// TODO Auto-generated method stub
 		
-		File file=new File(path);
-		FileInputStream stream=new FileInputStream(file);
+//		File file=new File(path);
+//		FileInputStream stream=new FileInputStream(file);
+		
+		InputStream stream=TestProperties.class.getResourceAsStream("typedata.properties");
 		
 		Properties pro=new Properties();
 		
