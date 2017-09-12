@@ -15,11 +15,11 @@ public class TestSynchronized {
 		Thread thread3=new Thread(new MyThreadPrint("C",b,c));
 		
 		thread1.start();
-		Thread.sleep(100);
+//		Thread.sleep(100);
 		thread2.start();
-		Thread.sleep(100);
+//		Thread.sleep(100);
 		thread3.start();
-		Thread.sleep(100);
+//		Thread.sleep(100);
 		
 	}
 	
@@ -61,6 +61,7 @@ class MyThreadPrint implements Runnable{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
 			}
 		}
 	}
