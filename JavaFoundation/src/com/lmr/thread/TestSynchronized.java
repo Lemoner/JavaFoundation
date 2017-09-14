@@ -14,12 +14,16 @@ public class TestSynchronized {
 		Thread thread2=new Thread(new MyThreadPrint("B",a,b));
 		Thread thread3=new Thread(new MyThreadPrint("C",b,c));
 		
+		thread1.setName("A");
+		thread2.setName("B");
+		thread3.setName("C");
+		
 		thread1.start();
-//		Thread.sleep(100);
+		Thread.sleep(100);
 		thread2.start();
-//		Thread.sleep(100);
+		Thread.sleep(100);
 		thread3.start();
-//		Thread.sleep(100);
+		Thread.sleep(100);
 		
 	}
 	
