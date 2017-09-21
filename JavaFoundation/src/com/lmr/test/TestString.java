@@ -5,7 +5,16 @@ public class TestString {
 	public static void main(String[] args) {
 		
 //		TestOne();
-		TestTwo();
+//		TestTwo();
+		TestThree();
+		
+	}
+	
+	private static void TestThree(){
+		
+		String s="123452729";
+		System.out.println(s.replaceFirst('2'+"", 'x'+""));
+		System.out.println(s);
 		
 	}
 
