@@ -17,15 +17,18 @@ public class MyThread2 extends Thread {
 	@Override
 	public void run() {
 		try {
+			System.out.println(Thread.currentThread().getName()+" is start exchange");
 //			System.out.println(Thread.currentThread().getName()+" is exchange "+s+" to " + exchanger.exchange(s));
 			System.out.println(Thread.currentThread().getName()+" is exchange "+s+" to " + exchanger.exchange(s,2,TimeUnit.SECONDS));
+			System.out.println(Thread.currentThread().getName()+" is end exchange");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (TimeoutException e) {
 			// TODO Auto-generated catch block
+			System.out.println(Thread.currentThread().getName()+" is time out");
 			e.printStackTrace();
-		}
+		} 
 	}
 
 }

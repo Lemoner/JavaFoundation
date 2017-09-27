@@ -45,6 +45,9 @@ public class TestListOne {
 //		}
 		
 		System.out.println(list);
+		
+		list.remove(1);
+		
 	}
 	
 }

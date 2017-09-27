@@ -103,11 +103,11 @@ public class TestSemaphore {
 
 		TestSemaphore test = new TestSemaphore();
 
-		// test.TestOne();
+//		 test.TestOne();
 		// test.TestTwo();
-		// test.TestThree();
+		 test.TestThree();
 		// test.TestFour();
-		test.TestPC();
+//		test.TestPC();
 
 	}
 

@@ -10,18 +10,19 @@ public class TestExchanger {
 
 		MyThread1 thread1 = new MyThread1(exchanger);
 		thread1.start();
-
-		System.out.println("Main is end");
 		
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		System.out.println("Main is end");
+		System.out.println("thread1 isAlive "+thread1.isAlive());
 		
-		MyThread1 thread2 = new MyThread1(exchanger);
-		thread2.start();
+//		MyThread1 thread2 = new MyThread1(exchanger);
+//		thread2.start();
 
 	}
 	
@@ -35,8 +36,8 @@ public class TestExchanger {
 		thread2.setName("MyThread2");
 		MyThread2 thread3=new MyThread2(exchanger, "CCC");
 		thread3.setName("MyThread3");
-//		MyThread2 thread4=new MyThread2(exchanger, "DDD");
-//		thread4.setName("MyThread4");
+		MyThread2 thread4=new MyThread2(exchanger, "DDD");
+		thread4.setName("MyThread4");
 		
 		thread1.start();
 		thread2.start();
@@ -50,9 +51,10 @@ public class TestExchanger {
 			e.printStackTrace();
 		}
 		
-		System.out.println(thread1.isAlive());
-		System.out.println(thread2.isAlive());
-		System.out.println(thread3.isAlive());
+		System.out.println("thread1 isAlive "+thread1.isAlive());
+		System.out.println("thread2 isAlive "+thread2.isAlive());
+		System.out.println("thread3 isAlive "+thread3.isAlive());
+//		System.out.println("thread4 isAlive "+thread4.isAlive());
 		
 	}
 
