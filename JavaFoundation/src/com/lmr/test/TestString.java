@@ -6,7 +6,8 @@ public class TestString {
 		
 //		TestOne();
 //		TestTwo();
-		TestThree();
+//		TestThree();
+		TestFour();
 		
 	}
 	
@@ -37,6 +38,13 @@ public class TestString {
 		String b2=new String("aa");
 		
 		System.out.println(a2==b2);
+		
+	}
+	
+	private static void TestFour(){
+		
+		String s="10.1.16.89";
+		System.out.println(s.split("\\.")[3]);
 		
 	}
 	

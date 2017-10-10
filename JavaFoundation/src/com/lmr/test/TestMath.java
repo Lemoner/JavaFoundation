@@ -4,7 +4,7 @@ public class TestMath {
 
 	public static void main(String[] args) {
 
-		test2();
+		testmax();
 
 	}
 
