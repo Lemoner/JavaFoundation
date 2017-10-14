@@ -1,4 +1,4 @@
-package com.lmr.concurrent.executor;
+package com.lmr.concurrent.executorservice;
 
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;

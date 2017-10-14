@@ -1,14 +1,18 @@
-package com.lmr.concurrent.executor;
+package com.lmr.concurrent.executorservice;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
-public class TestExecutor {
+public class TestExecutorService {
 
 	public void TestOne() {
 
@@ -218,18 +222,55 @@ public class TestExecutor {
 			}
 		}
 	}
+	
+	
 
 	public static void main(String[] args) {
 
-		TestExecutor test = new TestExecutor();
+		TestExecutorService test = new TestExecutorService();
 
 //		test.TestOne();
 //		test.TestTwo();
 //		test.TestThree();
 //		test.TestFour();
 //		test.TestFive();
-		test.TestSix();
+//		test.TestSix();
+		
+		test.TestSeven();
 
+	}
+
+	private void TestSeven() {
+		
+		List<MyCallable> list=new ArrayList<>();
+		list.add(new MyCallable("MyCallable1", 100, true));
+		list.add(new MyCallable("MyCallable2", 200, false));
+		list.add(new MyCallable("MyCallable3", 300, true));
+		
+		ExecutorService service=Executors.newCachedThreadPool();
+		
+		try {
+//			System.out.println("the first end is "+service.invokeAny(list));
+//			System.out.println("the first end is "+service.invokeAny(list, 50, TimeUnit.MILLISECONDS));
+			
+//			List<Future<String>> futures=service.invokeAll(list);
+			List<Future<String>> futures=service.invokeAll(list, 250, TimeUnit.MILLISECONDS);
+			System.out.println("all is end ");
+			for(int i=0;i<futures.size();i++){
+				try {
+					System.out.println(futures.get(i).get());
+					System.out.println();
+				} catch (ExecutionException e) {
+					// TODO Auto-generated catch block
+					System.out.println("*/*");
+					e.printStackTrace();
+				}
+			}
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			System.out.println("+-+");
+			e.printStackTrace();
+		}		
 	}
 
 }

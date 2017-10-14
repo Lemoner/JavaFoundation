@@ -1,4 +1,4 @@
-package com.lmr.concurrent.executor;
+package com.lmr.concurrent.executorservice;
 
 public class MyRunnable1 implements Runnable{
 
