@@ -15,6 +15,13 @@ public class TestMath {
 		int max;
 		max = a > b ? a : b;
 		System.out.println(max);
+		
+		int i=-1;
+		int j=2;
+		
+		System.out.println(i=j);
+		System.out.println(i);
+		
 	}
 
 	public static void test2() {

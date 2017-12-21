@@ -24,12 +24,12 @@ public class TestCompletionService {
 		ExecutorService service=Executors.newCachedThreadPool();
 		CompletionService completionService=new ExecutorCompletionService<>(service); 
 		
-		for(int i=1;i<6;i++){
+		for(int i=1;i<5;i++){
 			MyCallable callable=new MyCallable("MyCallable"+i, i*1000);
 			completionService.submit(callable);
 		}
 		
-		for(int i=1;i<7;i++){
+		for(int i=1;i<5;i++){
 			try {
 				System.out.println("wait "+i+" result "+System.currentTimeMillis());
 //				Thread.sleep(1000);
@@ -59,12 +59,12 @@ public class TestCompletionService {
 		ExecutorService service=Executors.newCachedThreadPool();
 		CompletionService completionService=new ExecutorCompletionService<>(service); 
 		
-		for(int i=1;i<6;i++){
+		for(int i=1;i<5;i++){
 			MyCallable callable=new MyCallable("MyCallable"+i, i*1000);
 			completionService.submit(callable);
 		}
 		
-		for(int i=1;i<7;i++){
+		for(int i=1;i<5;i++){
 			try {
 				System.out.println("wait "+i+" result "+System.currentTimeMillis());
 				System.out.println(completionService.take().get()+" "+System.currentTimeMillis());

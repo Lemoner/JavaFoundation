@@ -17,10 +17,36 @@ public class TestArrayList {
 //		TestAddIndex();
 //		TestAdd();
 //		TestAddAndRemove();
-		TestSortByComparator();
+//		TestSortByComparator();
+		TestDynamicAdd();
+
 		
 	}
 	
+	private static void TestDynamicAdd() {
+		
+		List<Integer> list=new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		
+		System.out.println(list.toString());
+		
+//		list.add(2, 22);
+//		System.out.println(list.toString());
+		
+		for(int i=0;i<list.size();i++){
+			if(list.get(i)%2==0){
+				list.add(i+1,999);
+				i++;
+			}
+		}
+		System.out.println(list.toString());
+		
+	}
+
 	private static void TestSortByComparator() {
 		
 		List<Integer> list=new ArrayList<>();
