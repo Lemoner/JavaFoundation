@@ -1,11 +1,56 @@
 package com.lmr.test;
 
+import java.io.File;
+import java.io.FileFilter;
+
 public class TestMath {
 
 	public static void main(String[] args) {
 
-		testmax();
+//		testmax();
+//		testIntEqual();
+//		testIntToByte();
+		testDivde();
+		
+	}
 
+	private static void testDivde() {
+		
+		int x=1;
+		float y=2;
+		double z=3;
+		int d=3;
+		
+		System.out.println(x/y);
+		System.out.println(x/z);
+		System.out.println(x*1.0/d);
+		
+	}
+
+	private static void testIntToByte() {
+		
+		int a=234;
+		System.out.println((byte)a);
+		
+	}
+
+	private static void testIntEqual() {
+		
+		Integer a=1;
+		Integer b=2;
+		Integer c=3;
+		Integer d=3;
+		Integer e=128;
+		Integer f=128;
+		Long g=3L;
+		
+		System.out.println(c==d);
+		System.out.println(e==f);//
+		System.out.println(c==(a+b));
+		System.out.println(c.equals(a+b));
+		System.out.println(g==(a+b));//
+		System.out.println(g.equals(a+b));
+		
 	}
 
 	public static void testmax() {

@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public class TestMap {
 
@@ -36,7 +40,100 @@ public class TestMap {
 		
 //		initHashMap();
 		
-		initTreeMap();
+//		initTreeMap();
+		
+//		AddRepeatData();
+		
+//		initObjectData();
+		
+		testNullData();
+		
+	}
+
+	private static void testNullData() {
+		
+		HashMap<String, String> map=new HashMap<>();
+		
+		map.put(null, "A");
+		map.put("k1", null);
+		map.put("k2", null);
+		map.put("k3", "V");
+		
+		System.out.println(map.size());
+		System.out.println(map.get(null));
+		System.out.println(map.get("K1"));
+		System.out.println(map.get("k1")==map.get("k2"));
+		System.out.println(map.get("k1")==null);
+		System.out.println(map.getOrDefault("k1", "D"));
+		
+	}
+
+	private static void initObjectData() {
+		// TODO Auto-generated method stub
+		
+		HashMap<String, String> hashMap=new HashMap<>();
+		
+		hashMap.put("A", "A");
+		hashMap.put("B", "B");
+		hashMap.put("C", "C");
+		
+		Set<String> set1=hashMap.keySet();
+		Set<String> set2=hashMap.keySet();
+		
+		Set<String> set3=new HashSet<>();
+		
+		set1.remove("B");
+		set3.add("X");
+		
+		System.out.println(set1.toString());
+		System.out.println(set2.toString());
+		System.out.println(set3.toString());
+		
+		System.out.println("hashMap "+hashMap.size()+" "+hashMap);
+		
+	}
+
+	private static void AddRepeatData() {
+		// TODO Auto-generated method stub
+		
+//		HashMap<Integer, String> hashMap=new HashMap<>();
+//		
+//		hashMap.put(1, "A");
+//		hashMap.put(2, "B");
+//		hashMap.put(3, "C");
+//		hashMap.put(1, "AAA");
+//		hashMap.put(3, "CC");
+		
+		HashMap<String, String> hashMap=new HashMap<>();
+		
+		hashMap.put(new String("A"), "A");
+		hashMap.put(new String("B"), "B");
+		hashMap.put(new String("C"), "C");
+		hashMap.put(new String("A"), "AAA");
+		hashMap.put(new String("B"), "CC");
+		
+		System.out.println("hashMap "+hashMap.size()+" "+hashMap);
+		
+		Hashtable<Integer, String> hashtable=new Hashtable<>();
+		
+		hashtable.put(1, "A");
+		hashtable.put(2, "B");
+		hashtable.put(3, "C");
+		hashtable.put(1, "AAA");
+		hashtable.put(3, "CC");
+		
+		System.out.println("hashtable "+hashtable.size()+" "+hashtable);
+		
+		IdentityHashMap<String, String> identityHashMap=new IdentityHashMap<>();
+		
+		identityHashMap.put(new String("A"), "A");
+		identityHashMap.put(new String("B"), "B");
+		identityHashMap.put(new String("C"), "C");
+		identityHashMap.put(new String("A"), "AAA");
+		identityHashMap.put(new String("B"), "CC");
+		
+		System.out.println("identityHashMap "+identityHashMap.size()+" "+identityHashMap);
+		
 	}
 
 	private static void initTreeMap() {

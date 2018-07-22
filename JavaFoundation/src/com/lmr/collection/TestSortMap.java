@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class TestSortMap {
@@ -17,7 +18,7 @@ public class TestSortMap {
 		for (int i = 0; i < a.length; i++) {
 			map.put(i, a[i]);
 		}
-
+		
 		// 这里将map.entrySet()转换成list
 		List<Map.Entry<Integer, Integer>> list = new ArrayList<Map.Entry<Integer, Integer>>(map.entrySet());
 		// 然后通过比较器来实现排序
@@ -33,19 +34,20 @@ public class TestSortMap {
 		x=-1;
 		index=0;
 		for (Map.Entry<Integer, Integer> mapping : list) {
-			System.out.println(mapping.getKey() + ":" + mapping.getValue());
+//			System.out.println(mapping.getKey() + ":" + mapping.getValue());
 			if(x!=mapping.getValue()){
 				index++;
 				x=mapping.getValue();
 			}
-			map.put(mapping.getKey(), mapping.getValue()+100*index);
+//			map.put(mapping.getKey(), mapping.getValue()+100*index);
+			map.put(mapping.getKey(), mapping.getValue());
 		}
-		System.out.println("---------------------");
-		for (Map.Entry<Integer, Integer> mapping : list) {
-			System.out.println(mapping.getKey() + ":" + mapping.getValue());
-			map.put(mapping.getKey(), mapping.getValue()+1000);
-		}
-		System.out.println("---------------------");
+//		System.out.println("---------------------");
+//		for (Map.Entry<Integer, Integer> mapping : list) {
+//			System.out.println(mapping.getKey() + ":" + mapping.getValue());
+//			map.put(mapping.getKey(), mapping.getValue()+1000);
+//		}
+//		System.out.println("---------------------");
 		for(Map.Entry<Integer, Integer> sortmap:map.entrySet()){
 			System.out.println(sortmap.getKey() + ":" + sortmap.getValue());
 		}

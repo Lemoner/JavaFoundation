@@ -17,6 +17,20 @@ public class Student {
 		this.name=name;
 		this.age=age;
 	}
+	
+	public Student (int x,String s){
+		
+	}
+	
+	private Student(int i,int j,int t){
+		
+	}
+	
+	private Student(int id,int age){
+		super();
+		this.id=id;
+		this.age=age;
+	}
 
 	public int getId() {
 		return id;

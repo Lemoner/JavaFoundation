@@ -84,10 +84,10 @@ public class TestThread {
 		MyThread5 thread4=new MyThread5(service, "Write"); 
 		thread4.setName("thread4_write");
 		
-		thread1.start();
-		thread2.start();
 		thread3.start();
 		thread4.start();
+		thread1.start();
+		thread2.start();
 		
 	}
 	

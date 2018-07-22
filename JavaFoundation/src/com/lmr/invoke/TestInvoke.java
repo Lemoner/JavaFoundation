@@ -2,9 +2,15 @@ package com.lmr.invoke;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 public class TestInvoke {
 
@@ -12,10 +18,65 @@ public class TestInvoke {
 		
 //		InvokeOne();
 		
-		InvokeTwo();
+//		InvokeTwo();
+		
+		InvokeThree();
 		
 	}
 	
+	private static void InvokeThree() {
+		// TODO Auto-generated method stub
+		
+		Class c=Student.class;
+		
+		Constructor[] constructors=c.getDeclaredConstructors();
+		
+		for(Constructor con:constructors){
+			String name=con.getName();//方法名
+			Class[] paramterType=con.getParameterTypes();//方法中参数类型
+			
+			int mod=con.getModifiers();
+			String modtype=Modifier.toString(mod);//方法的属性
+			
+			System.out.print(modtype+" "+name+" (");
+			for(Class p:paramterType){
+				System.out.print(p.getSimpleName()+" ");
+			}
+			System.out.println(")");
+		}
+		
+		System.out.println("---------------");
+		
+		Arrays.sort(constructors, new Comparator<Constructor>() {
+			@Override
+			public int compare(Constructor c1, Constructor c2) {
+				boolean p1 = Modifier.isPublic(c1.getModifiers());
+				boolean p2 = Modifier.isPublic(c2.getModifiers());
+				if (p1 != p2) {
+					return (p1 ? -1 : 1);
+				}
+				int c1pl = c1.getParameterTypes().length;
+				int c2pl = c2.getParameterTypes().length;
+				return (c1pl < c2pl ? 1 : (c1pl > c2pl ? -1 : 0));
+			}
+		});
+		
+		for(Constructor con:constructors){
+			String name=con.getName();//方法名
+			Class[] paramterType=con.getParameterTypes();//方法中参数类型
+			
+			int mod=con.getModifiers();
+			String modtype=Modifier.toString(mod);//方法的属性
+			
+			System.out.print(modtype+" "+name+" (");
+			for(Class p:paramterType){
+				System.out.print(p.getSimpleName()+" ");
+			}
+			System.out.println(")");
+		}
+		
+	}
+
 	private static void InvokeTwo() {
 		// TODO Auto-generated method stub
 		

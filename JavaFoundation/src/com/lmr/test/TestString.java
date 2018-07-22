@@ -2,14 +2,23 @@ package com.lmr.test;
 
 public class TestString {
 
-	public static void main(String[] args) {
-		
-//		TestOne();
-//		TestTwo();
-//		TestThree();
-		TestFour();
-		
-	}
+//	public static void main(String[] args) {
+//		
+////		TestOne();
+////		TestTwo();
+////		TestThree();
+//		TestFour();
+//		
+//	}
+	
+	public String name="abc"; 
+    public static void main(String[] args){ 
+    	TestString test=new TestString(); 
+    	TestString testB=new TestString(); 
+        System.out.println(test.equals(testB)+","+test.name.equals(testB.name)); 
+        System.out.println(test.name.hashCode());
+        System.out.println(testB.name.hashCode());
+    } 
 	
 	private static void TestThree(){
 		

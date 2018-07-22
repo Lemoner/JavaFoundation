@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 import org.w3c.dom.ls.LSException;
@@ -18,11 +19,30 @@ public class TestArrayList {
 //		TestAdd();
 //		TestAddAndRemove();
 //		TestSortByComparator();
-		TestDynamicAdd();
+//		TestDynamicAdd();
+		TestIterator();
 
 		
 	}
 	
+	private static void TestIterator() {
+		
+		List<Integer> list=new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		
+		Iterator<Integer> iterator=list.iterator();
+		while (iterator.hasNext()) {
+//			iterator.next();
+			iterator.remove();
+			System.out.println(list.size());
+		}
+		
+	}
+
 	private static void TestDynamicAdd() {
 		
 		List<Integer> list=new ArrayList<>();
@@ -92,7 +112,7 @@ public class TestArrayList {
 		list.add(5);
 		
 		System.out.println(list.toString());
-		System.out.println(list.remove(0));
+		System.out.println(list.remove(5));
 		System.out.println(list.toString());
 		
 	}

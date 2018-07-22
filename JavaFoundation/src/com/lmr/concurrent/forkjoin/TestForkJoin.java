@@ -9,8 +9,8 @@ public class TestForkJoin {
 		
 		TestForkJoin test=new TestForkJoin();
 		
-		test.TestOne();
-//		test.TestTwo();
+//		test.TestOne();
+		test.TestTwo();
 //		test.TestThree();
 		
 	}
