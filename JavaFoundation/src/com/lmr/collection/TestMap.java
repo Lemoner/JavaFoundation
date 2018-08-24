@@ -3,15 +3,21 @@ package com.lmr.collection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.IdentityHashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
+
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 import java.util.Set;
 
 public class TestMap {
@@ -46,7 +52,74 @@ public class TestMap {
 		
 //		initObjectData();
 		
-		testNullData();
+//		testNullData();
+		
+//		initHashMapIterator();
+		
+		TestSort();
+		
+	}
+
+	private static void TestSort() {
+		
+		HashMap<String, Integer> hashMap=new HashMap<>();
+		
+		hashMap.put("a", 1);
+		hashMap.put("b", 2);
+		hashMap.put("ac", 3);
+		hashMap.put("c", 4);
+		hashMap.put("de", 5);
+		hashMap.put("cc", 6);
+		
+		System.out.println(hashMap.keySet().toString());
+		
+		hashMap.put("ad", 7);
+		hashMap.put("dc", 8);
+		hashMap.put("bb", 9);
+		
+		System.out.println(hashMap.keySet().toString());
+		
+		TreeMap<String, Integer> treeMap=new TreeMap<>();
+		
+		treeMap.put("a", 1);
+		treeMap.put("b", 2);
+		treeMap.put("ac", 3);
+		treeMap.put("c", 4);
+		treeMap.put("de", 5);
+		treeMap.put("cc", 6);
+		
+		System.out.println(treeMap.keySet().toString());
+		
+		treeMap.put("ad", 7);
+		treeMap.put("dc", 8);
+		treeMap.put("bb", 9);
+		
+		System.out.println(treeMap.keySet().toString());
+		
+	}
+
+	private static void initHashMapIterator() {
+		
+		ConcurrentHashMap<String, String> map=new ConcurrentHashMap<>();
+		
+		map.put("1", "A");
+		map.put("2", "B");
+		map.put("3", "C");
+		map.put("4", "D");
+		map.put("5", "E");
+		
+		Enumeration<String> iterator=map.keys();
+		
+		while (iterator.hasMoreElements()) {
+			String str = (String) iterator.nextElement();
+			
+			System.out.println(str+" "+map.size());
+			if(str.equals("2")){
+				map.remove("3");
+				map.remove("4");
+				System.out.println(map.size());
+			}
+		}
 		
 	}
 

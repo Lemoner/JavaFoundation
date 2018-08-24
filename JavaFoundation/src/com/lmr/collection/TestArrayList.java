@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.w3c.dom.ls.LSException;
 
@@ -27,19 +28,38 @@ public class TestArrayList {
 	
 	private static void TestIterator() {
 		
-		List<Integer> list=new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		list.add(5);
+//		List<Integer> list=new ArrayList<>();
+//		list.add(1);
+//		list.add(2);
+//		list.add(3);
+//		list.add(4);
+//		list.add(5);
+//		
+//		Iterator<Integer> iterator=list.iterator();
+//		while (iterator.hasNext()) {
+////			iterator.next();
+//			iterator.remove();
+//			System.out.println(list.size());
+//		}
 		
-		Iterator<Integer> iterator=list.iterator();
+		
+		CopyOnWriteArrayList<Integer> arrayList=new CopyOnWriteArrayList<>();
+		arrayList.add(1);
+		arrayList.add(2);
+		arrayList.add(3);
+		arrayList.add(4);
+		arrayList.add(5);
+		
+		Iterator<Integer> iterator=arrayList.iterator();
 		while (iterator.hasNext()) {
 //			iterator.next();
-			iterator.remove();
-			System.out.println(list.size());
+			int x=iterator.next();
+			System.out.println(x+" "+arrayList.size());
+			if(x==2){
+				arrayList.remove(new Integer(3));
+			}
 		}
+		System.out.println(arrayList.toString());
 		
 	}
 
