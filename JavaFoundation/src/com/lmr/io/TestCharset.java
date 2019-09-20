@@ -5,11 +5,9 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
-import org.eclipse.draw2d.ToolTipHelper;
-
 public class TestCharset {
 
-	final static String str="I am ĮȻ ��";
+	final static String str="I am ĮȻ ��";
 	
 	public static void main(String[] args) {
 		

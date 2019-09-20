@@ -8,8 +8,6 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 
-import com.mysql.jdbc.Buffer;
-
 public class ChatClient {
 
 	private static Selector selector;
